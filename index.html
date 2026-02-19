@@ -1,145 +1,171 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Joseph Nagothu | Data Analyst Portfolio</title>
+<title>Joseph Nagothu | Portfolio</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
+* {
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background: #f5f7fa;
     margin: 0;
-    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f3f4f6;
+    display: flex;
+    height: 100vh;
 }
 
-.container {
-    width: 90%;
-    max-width: 1100px;
-    margin: auto;
-    padding: 40px 0;
+/* LEFT PANEL */
+.left {
+    width: 35%;
+    background: white;
+    padding: 60px 40px;
+    position: fixed;
+    height: 100vh;
+    border-right: 1px solid #e5e7eb;
 }
 
-.hero {
-    text-align: center;
-    padding: 60px 0;
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 25px;
 }
 
-.hero h1 {
-    font-size: 42px;
+.left h1 {
     margin-bottom: 10px;
+    font-size: 32px;
 }
 
-.hero p {
-    font-size: 18px;
+.left p {
     color: #555;
-    max-width: 700px;
-    margin: auto;
+    margin-bottom: 25px;
 }
 
 .button {
     display: inline-block;
-    padding: 12px 20px;
-    margin: 10px 8px;
-    background: #2563eb;
+    padding: 10px 16px;
+    margin: 6px 6px 6px 0;
+    background-color: #2563eb;
     color: white;
     text-decoration: none;
     border-radius: 6px;
+    font-size: 14px;
     font-weight: bold;
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
 .button:hover {
-    background: #1e40af;
+    background-color: #1e40af;
 }
 
-.section-title {
-    margin-top: 60px;
-    font-size: 28px;
+.skills {
+    margin-top: 40px;
+    font-size: 14px;
+    color: #444;
 }
 
-.projects {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    margin-top: 30px;
+/* RIGHT PANEL */
+.right {
+    margin-left: 35%;
+    width: 65%;
+    padding: 60px;
+    overflow-y: auto;
 }
 
-.card {
+.project-card {
     background: white;
+    padding: 25px;
     border-radius: 10px;
-    padding: 20px;
+    margin-bottom: 40px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
-.card:hover {
-    transform: translateY(-5px);
+.project-card:hover {
+    transform: translateY(-4px);
 }
 
-.card img {
+.project-card img {
     width: 100%;
     border-radius: 8px;
+    margin-bottom: 20px;
 }
 
-.card h3 {
-    margin-top: 15px;
+.project-card h3 {
+    margin-top: 0;
 }
 
 .footer {
-    text-align: center;
-    margin-top: 80px;
+    font-size: 13px;
     color: #777;
-    font-size: 14px;
+    margin-top: 60px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<!-- LEFT PANEL -->
+<div class="left">
+    <img src="profile.jpg" alt="Joseph Nagothu" class="profile-pic">
 
-<div class="hero">
-<h1>Joseph Nagothu</h1>
-<p>
-Business Analytics Graduate Student focused on performance measurement, cost optimization,
-marketing analytics, and strategic data-driven decision making.
-</p>
+    <h1>Joseph Nagothu</h1>
 
-<a class="button" href="https://www.linkedin.com/in/joseph-nagothu-50a493355/" target="_blank">LinkedIn</a>
-<a class="button" href="Joseph_Nagothu_Resume.pdf" target="_blank">Download Resume</a>
+    <p>
+    Business Analytics Graduate Student focused on performance measurement,
+    cost optimization, marketing analytics, and data-driven strategy.
+    </p>
+
+    <a class="button" href="https://www.linkedin.com/in/joseph-nagothu-50a493355/" target="_blank">LinkedIn</a>
+    <a class="button" href="Joseph_Nagothu_Resume.pdf" target="_blank">Download Resume</a>
+
+    <div class="skills">
+        <strong>Technical Skills</strong><br><br>
+        Python (Pandas, Plotly, Streamlit)<br>
+        KPI & Performance Reporting<br>
+        Marketing & Media Analytics<br>
+        Cost Modeling & Financial Analysis
+    </div>
 </div>
 
-<h2 class="section-title">Featured Projects</h2>
+<!-- RIGHT PANEL -->
+<div class="right">
 
-<div class="projects">
+    <div class="project-card">
+        <img src="campaign.png" alt="Campaign Dashboard">
 
-<div class="card">
-<img src="campaign.png" alt="Campaign Dashboard">
-<h3>Campaign Performance & Optimization Dashboard</h3>
-<p>
-Executive reporting dashboard evaluating campaign effectiveness,
-conversion rates, channel performance, and simulated budget allocation.
-</p>
-<a class="button" href="https://campaign-performance-dashboard-cqjisa75dlk3sdi5xpekk7.streamlit.app/" target="_blank">Live Dashboard</a>
-<a class="button" href="https://github.com/josephn24" target="_blank">GitHub</a>
-</div>
+        <h3>Campaign Performance & Optimization Dashboard</h3>
 
-<div class="card">
-<img src="coffee.png" alt="Coffee Dashboard">
-<h3>Coffee Shop Cost Optimization Dashboard</h3>
-<p>
-Operational analytics tool analyzing revenue drivers, ingredient costs,
-labor impact, and profit margins to identify cost-saving opportunities.
-</p>
-<a class="button" href="https://coffeeshop-dse4qsnm2gdwo5nltq7zbt.streamlit.app/" target="_blank">Live Dashboard</a>
-<a class="button" href="https://github.com/josephn24" target="_blank">GitHub</a>
-</div>
+        <p>
+        Executive-level reporting dashboard evaluating campaign effectiveness,
+        conversion rates, channel performance, and simulated budget allocation.
+        </p>
 
-</div>
+        <a class="button" href="https://campaign-performance-dashboard-cqjisa75dlk3sdi5xpekk7.streamlit.app/" target="_blank">Live Dashboard</a>
+        <a class="button" href="https://github.com/josephn24" target="_blank">GitHub</a>
+    </div>
 
-<div class="footer">
-© 2025 Joseph Nagothu
-</div>
+    <div class="project-card">
+        <img src="coffee.png" alt="Coffee Dashboard">
+
+        <h3>Coffee Shop Cost Optimization Dashboard</h3>
+
+        <p>
+        Operational analytics tool analyzing revenue drivers, ingredient costs,
+        labor impact, and profit margins to identify cost-saving opportunities.
+        </p>
+
+        <a class="button" href="https://coffeeshop-dse4qsnm2gdwo5nltq7zbt.streamlit.app/" target="_blank">Live Dashboard</a>
+        <a class="button" href="https://github.com/josephn24" target="_blank">GitHub</a>
+    </div>
+
+    <div class="footer">
+        © 2025 Joseph Nagothu
+    </div>
 
 </div>
 
