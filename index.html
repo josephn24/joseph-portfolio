@@ -2,88 +2,167 @@
 <html>
 <head>
     <title>Joseph Nagothu | Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 60px auto;
-            max-width: 850px;
-            line-height: 1.6;
-            color: #333;
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f7f9fc;
+            color: #1f2937;
         }
+
+        .container {
+            max-width: 1000px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+
         h1 {
-            font-size: 36px;
-            margin-bottom: 5px;
+            font-size: 42px;
+            margin-bottom: 10px;
         }
+
+        .subtitle {
+            font-size: 18px;
+            color: #4b5563;
+            margin-bottom: 25px;
+        }
+
+        .bio {
+            font-size: 16px;
+            max-width: 700px;
+            margin-bottom: 50px;
+        }
+
         h2 {
-            margin-top: 40px;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 5px;
+            font-size: 24px;
+            margin-bottom: 20px;
+            margin-top: 60px;
         }
-        .project {
-            margin-top: 20px;
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
         }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+            transition: all 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.08);
+        }
+
+        .card h3 {
+            margin-top: 0;
+        }
+
         .links a {
+            display: inline-block;
             margin-right: 15px;
+            margin-top: 10px;
+            padding: 8px 14px;
+            border-radius: 6px;
             text-decoration: none;
-            color: #007acc;
-            font-weight: bold;
+            font-size: 14px;
+            font-weight: 600;
         }
+
+        .live {
+            background-color: #2563eb;
+            color: white;
+        }
+
+        .github {
+            background-color: #e5e7eb;
+            color: #111827;
+        }
+
         .skills {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
             margin-top: 30px;
         }
+
+        footer {
+            margin-top: 80px;
+            font-size: 14px;
+            color: #6b7280;
+        }
+
     </style>
 </head>
+
 <body>
 
+<div class="container">
+
     <h1>Joseph Nagothu</h1>
-    <p><strong>Business Analytics | Data Strategy | Performance Optimization</strong></p>
-
-    <p>
-        I develop interactive analytics dashboards that help organizations translate data into
-        clear business decisions. My work centers on performance measurement, cost optimization,
-        customer behavior analysis, and strategic insights that support smarter marketing
-        and operational investments.
-    </p>
-
-    <h2>📊 Featured Projects</h2>
-
-    <div class="project">
-        <h3>Campaign Performance & Optimization Dashboard</h3>
-        <p>
-            Built an executive-level reporting dashboard to evaluate campaign effectiveness,
-            audience engagement, and revenue performance. Includes conversion analysis,
-            channel comparison, and simulated media spend allocation to support
-            data-driven budget decisions.
-        </p>
-        <div class="links">
-            <a href="https://campaign-performance-dashboard-cqjisa75dlk3sdi5xpekk7.streamlit.app/" target="_blank">Live Dashboard</a>
-            <a href="https://github.com/josephn24/campaign-performance-dashboard" target="_blank">GitHub Repo</a>
-        </div>
+    <div class="subtitle">
+        Business Analytics | Data Strategy | Performance Optimization
     </div>
 
-    <div class="project">
-        <h3>Coffee Shop Cost Optimization Dashboard</h3>
-        <p>
-            Designed an operational analytics tool to assess revenue drivers, ingredient costs,
-            labor impact, and profit margins. Identifies cost-saving opportunities and pricing
-            optimization strategies using transaction-level performance data.
-        </p>
-        <div class="links">
-            <a href="https://coffeeshop-dse4qsnm2gdwo5nltq7zbt.streamlit.app/" target="_blank">Live Dashboard</a>
-            <a href="https://github.com/josephn24/coffeeshop" target="_blank">GitHub Repo</a>
-        </div>
+    <div class="bio">
+        I build modern analytics dashboards that help organizations turn data into clear,
+        strategic decisions. My work focuses on performance measurement, cost optimization,
+        marketing analytics, and actionable insights that support smarter investments.
     </div>
 
-    <h2>🛠 Technical Skills</h2>
+    <h2>Featured Projects</h2>
+
+    <div class="projects">
+
+        <div class="card">
+            <h3>Campaign Performance & Optimization Dashboard</h3>
+            <p>
+                Executive-level reporting dashboard evaluating campaign effectiveness,
+                audience engagement, revenue performance, and simulated media spend allocation.
+                Designed to support data-driven budget decisions.
+            </p>
+            <div class="links">
+                <a class="live" href="https://campaign-performance-dashboard-cqjisa75dlk3sdi5xpekk7.streamlit.app/" target="_blank">Live Dashboard</a>
+                <a class="github" href="https://github.com/josephn24/campaign-performance-dashboard" target="_blank">GitHub Repo</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>Coffee Shop Cost Optimization Dashboard</h3>
+            <p>
+                Operational analytics dashboard analyzing revenue drivers, ingredient costs,
+                labor impact, and profit margins to identify pricing and cost-saving opportunities.
+            </p>
+            <div class="links">
+                <a class="live" href="https://coffeeshop-dse4qsnm2gdwo5nltq7zbt.streamlit.app/" target="_blank">Live Dashboard</a>
+                <a class="github" href="https://github.com/josephn24/coffeeshop" target="_blank">GitHub Repo</a>
+            </div>
+        </div>
+
+    </div>
+
+    <h2>Technical Skills</h2>
+
     <div class="skills">
-        <p>
-            Python (Pandas, Plotly, Streamlit) <br>
-            Performance Reporting & KPI Development <br>
-            Marketing & Media Analytics (CPA, ROAS, Conversion Rate) <br>
-            Cost Modeling & Financial Analysis <br>
-            Excel & Business Intelligence
-        </p>
+        Python (Pandas, Plotly, Streamlit) <br>
+        Performance Reporting & KPI Development <br>
+        Marketing & Media Analytics (CPA, ROAS, Conversion Rate) <br>
+        Cost Modeling & Financial Analysis <br>
+        Excel & Business Intelligence
     </div>
+
+    <footer>
+        © 2026 Joseph Nagothu
+    </footer>
+
+</div>
 
 </body>
 </html>
