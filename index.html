@@ -1,166 +1,145 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Joseph Nagothu | Portfolio</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Joseph Nagothu | Data Analyst Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #f7f9fc;
-            color: #1f2937;
-        }
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f7fa;
+    margin: 0;
+    padding: 0;
+}
 
-        .container {
-            max-width: 1000px;
-            margin: 80px auto;
-            padding: 0 20px;
-        }
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+    padding: 40px 0;
+}
 
-        h1 {
-            font-size: 42px;
-            margin-bottom: 10px;
-        }
+.hero {
+    text-align: center;
+    padding: 60px 0;
+}
 
-        .subtitle {
-            font-size: 18px;
-            color: #4b5563;
-            margin-bottom: 25px;
-        }
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
 
-        .bio {
-            font-size: 16px;
-            max-width: 700px;
-            margin-bottom: 50px;
-        }
+.hero p {
+    font-size: 18px;
+    color: #555;
+    max-width: 700px;
+    margin: auto;
+}
 
-        h2 {
-            font-size: 24px;
-            margin-bottom: 20px;
-            margin-top: 60px;
-        }
+.button {
+    display: inline-block;
+    padding: 12px 20px;
+    margin: 10px 8px;
+    background: #2563eb;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: 0.3s;
+}
 
-        .projects {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 30px;
-        }
+.button:hover {
+    background: #1e40af;
+}
 
-        .card {
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
-            transition: all 0.2s ease;
-        }
+.section-title {
+    margin-top: 60px;
+    font-size: 28px;
+}
 
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 35px rgba(0,0,0,0.08);
-        }
+.projects {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 30px;
+}
 
-        .card h3 {
-            margin-top: 0;
-        }
+.card {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    transition: 0.3s;
+}
 
-        .links a {
-            display: inline-block;
-            margin-right: 15px;
-            margin-top: 10px;
-            padding: 8px 14px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-        }
+.card:hover {
+    transform: translateY(-5px);
+}
 
-        .live {
-            background-color: #2563eb;
-            color: white;
-        }
+.card img {
+    width: 100%;
+    border-radius: 8px;
+}
 
-        .github {
-            background-color: #e5e7eb;
-            color: #111827;
-        }
+.card h3 {
+    margin-top: 15px;
+}
 
-        .skills {
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
-            margin-top: 30px;
-        }
-
-        footer {
-            margin-top: 80px;
-            font-size: 14px;
-            color: #6b7280;
-        }
-
-    </style>
+.footer {
+    text-align: center;
+    margin-top: 80px;
+    color: #777;
+    font-size: 14px;
+}
+</style>
 </head>
 
 <body>
 
 <div class="container">
 
-    <h1>Joseph Nagothu</h1>
-    <div class="subtitle">
-        Business Analytics | Data Strategy | Performance Optimization
-    </div>
+<div class="hero">
+<h1>Joseph Nagothu</h1>
+<p>
+Business Analytics Graduate Student focused on performance measurement, cost optimization,
+marketing analytics, and strategic data-driven decision making.
+</p>
 
-    <div class="bio">
-        I build modern analytics dashboards that help organizations turn data into clear,
-        strategic decisions. My work focuses on performance measurement, cost optimization,
-        marketing analytics, and actionable insights that support smarter investments.
-    </div>
+<a class="button" href="https://www.linkedin.com/in/joseph-nagothu-50a493355/" target="_blank">LinkedIn</a>
+<a class="button" href="Joseph_Nagothu_Resume.pdf" target="_blank">Download Resume</a>
+</div>
 
-    <h2>Featured Projects</h2>
+<h2 class="section-title">Featured Projects</h2>
 
-    <div class="projects">
+<div class="projects">
 
-        <div class="card">
-            <h3>Campaign Performance & Optimization Dashboard</h3>
-            <p>
-                Executive-level reporting dashboard evaluating campaign effectiveness,
-                audience engagement, revenue performance, and simulated media spend allocation.
-                Designed to support data-driven budget decisions.
-            </p>
-            <div class="links">
-                <a class="live" href="https://campaign-performance-dashboard-cqjisa75dlk3sdi5xpekk7.streamlit.app/" target="_blank">Live Dashboard</a>
-                <a class="github" href="https://github.com/josephn24/campaign-performance-dashboard" target="_blank">GitHub Repo</a>
-            </div>
-        </div>
+<div class="card">
+<img src="campaign.png" alt="Campaign Dashboard">
+<h3>Campaign Performance & Optimization Dashboard</h3>
+<p>
+Executive reporting dashboard evaluating campaign effectiveness,
+conversion rates, channel performance, and simulated budget allocation.
+</p>
+<a class="button" href="https://campaign-performance-dashboard-cqjisa75dlk3sdi5xpekk7.streamlit.app/" target="_blank">Live Dashboard</a>
+<a class="button" href="https://github.com/josephn24" target="_blank">GitHub</a>
+</div>
 
-        <div class="card">
-            <h3>Coffee Shop Cost Optimization Dashboard</h3>
-            <p>
-                Operational analytics dashboard analyzing revenue drivers, ingredient costs,
-                labor impact, and profit margins to identify pricing and cost-saving opportunities.
-            </p>
-            <div class="links">
-                <a class="live" href="https://coffeeshop-dse4qsnm2gdwo5nltq7zbt.streamlit.app/" target="_blank">Live Dashboard</a>
-                <a class="github" href="https://github.com/josephn24/coffeeshop" target="_blank">GitHub Repo</a>
-            </div>
-        </div>
+<div class="card">
+<img src="coffee.png" alt="Coffee Dashboard">
+<h3>Coffee Shop Cost Optimization Dashboard</h3>
+<p>
+Operational analytics tool analyzing revenue drivers, ingredient costs,
+labor impact, and profit margins to identify cost-saving opportunities.
+</p>
+<a class="button" href="https://coffeeshop-dse4qsnm2gdwo5nltq7zbt.streamlit.app/" target="_blank">Live Dashboard</a>
+<a class="button" href="https://github.com/josephn24" target="_blank">GitHub</a>
+</div>
 
-    </div>
+</div>
 
-    <h2>Technical Skills</h2>
-
-    <div class="skills">
-        Python (Pandas, Plotly, Streamlit) <br>
-        Performance Reporting & KPI Development <br>
-        Marketing & Media Analytics (CPA, ROAS, Conversion Rate) <br>
-        Cost Modeling & Financial Analysis <br>
-        Excel & Business Intelligence
-    </div>
-
-    <footer>
-        © 2026 Joseph Nagothu
-    </footer>
+<div class="footer">
+© 2025 Joseph Nagothu
+</div>
 
 </div>
 
