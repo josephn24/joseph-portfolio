@@ -1,171 +1,230 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Joseph Nagothu | Portfolio</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <title>Joseph Nagothu | Data Analytics Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-* {
-    box-sizing: border-box;
-}
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f3f4f6;
-    display: flex;
-    height: 100vh;
-}
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: white;
+      color: #111;
+    }
 
-/* LEFT PANEL */
-.left {
-    width: 35%;
-    background: white;
-    padding: 60px 40px;
-    position: fixed;
-    height: 100vh;
-    border-right: 1px solid #e5e7eb;
-}
+    .container {
+      display: flex;
+      height: 100vh;
+    }
 
-.profile-pic {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 25px;
-}
+    /* LEFT SIDE */
+    .left {
+      width: 40%;
+      padding: 80px 60px;
+      position: fixed;
+      height: 100vh;
+      overflow: hidden;
+      background: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
 
-.left h1 {
-    margin-bottom: 10px;
-    font-size: 32px;
-}
+    .profile-img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 30px;
+    }
 
-.left p {
-    color: #555;
-    margin-bottom: 25px;
-}
+    h1 {
+      font-size: 40px;
+      margin-bottom: 15px;
+    }
 
-.button {
-    display: inline-block;
-    padding: 10px 16px;
-    margin: 6px 6px 6px 0;
-    background-color: #2563eb;
-    color: white;
-    text-decoration: none;
-    border-radius: 6px;
-    font-size: 14px;
-    font-weight: bold;
-    transition: 0.2s;
-}
+    .bio {
+      font-size: 18px;
+      line-height: 1.6;
+      color: #555;
+      margin-bottom: 30px;
+      max-width: 400px;
+    }
 
-.button:hover {
-    background-color: #1e40af;
-}
+    .btn {
+      display: inline-block;
+      padding: 12px 20px;
+      margin-right: 10px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+    }
 
-.skills {
-    margin-top: 40px;
-    font-size: 14px;
-    color: #444;
-}
+    .btn-primary {
+      background-color: #2563eb;
+      color: white;
+    }
 
-/* RIGHT PANEL */
-.right {
-    margin-left: 35%;
-    width: 65%;
-    padding: 60px;
-    overflow-y: auto;
-}
+    .btn-secondary {
+      background-color: #e5e7eb;
+      color: #111;
+    }
 
-.project-card {
-    background: white;
-    padding: 25px;
-    border-radius: 10px;
-    margin-bottom: 40px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-    transition: 0.2s;
-}
+    .skills {
+      margin-top: 40px;
+    }
 
-.project-card:hover {
-    transform: translateY(-4px);
-}
+    .skills h3 {
+      font-size: 16px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #888;
+    }
 
-.project-card img {
-    width: 100%;
-    border-radius: 8px;
-    margin-bottom: 20px;
-}
+    .skills p {
+      font-size: 15px;
+      color: #555;
+      line-height: 1.6;
+    }
 
-.project-card h3 {
-    margin-top: 0;
-}
+    /* RIGHT SIDE */
+    .right {
+      width: 60%;
+      margin-left: 40%;
+      padding: 80px 80px;
+      height: 100vh;
+      overflow-y: auto;
+      background: white;
+    }
 
-.footer {
-    font-size: 13px;
-    color: #777;
-    margin-top: 60px;
-}
-</style>
+    .section-title {
+      font-size: 28px;
+      margin-bottom: 40px;
+    }
+
+    .project {
+      margin-bottom: 60px;
+    }
+
+    .project img {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+
+    .project h2 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .project p {
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    .footer {
+      margin-top: 60px;
+      color: #888;
+      font-size: 14px;
+    }
+
+    /* Responsive */
+    @media(max-width: 1000px) {
+      .container {
+        flex-direction: column;
+      }
+
+      .left {
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: 50px 30px;
+      }
+
+      .right {
+        width: 100%;
+        margin-left: 0;
+        height: auto;
+        padding: 50px 30px;
+      }
+    }
+
+  </style>
 </head>
 
 <body>
 
-<!-- LEFT PANEL -->
-<div class="left">
-    <img src="profile.jpg" alt="Joseph Nagothu" class="profile-pic">
+<div class="container">
+
+  <!-- LEFT PANEL -->
+  <div class="left">
+    <img src="profile.jpg" class="profile-img">
 
     <h1>Joseph Nagothu</h1>
 
-    <p>
-    Business Analytics Graduate Student focused on performance measurement,
-    cost optimization, marketing analytics, and data-driven strategy.
+    <p class="bio">
+      Business Analytics graduate student focused on performance measurement,
+      cost optimization, marketing analytics, and data-driven strategy.
     </p>
 
-    <a class="button" href="https://www.linkedin.com/in/joseph-nagothu-50a493355/" target="_blank">LinkedIn</a>
-    <a class="button" href="Joseph_Nagothu_Resume.pdf" target="_blank">Download Resume</a>
+    <div>
+      <a href="https://www.linkedin.com/in/joseph-nagothu-50a493355/" target="_blank" class="btn btn-primary">LinkedIn</a>
+      <a href="Joseph_Nagothu_Resume.pdf" target="_blank" class="btn btn-secondary">Download Resume</a>
+    </div>
 
     <div class="skills">
-        <strong>Technical Skills</strong><br><br>
+      <h3>Technical Skills</h3>
+      <p>
         Python (Pandas, Plotly, Streamlit)<br>
         KPI & Performance Reporting<br>
         Marketing & Media Analytics<br>
         Cost Modeling & Financial Analysis
+      </p>
     </div>
-</div>
+  </div>
 
-<!-- RIGHT PANEL -->
-<div class="right">
 
-    <div class="project-card">
-        <img src="campaign.png" alt="Campaign Dashboard">
+  <!-- RIGHT PANEL -->
+  <div class="right">
 
-        <h3>Campaign Performance & Optimization Dashboard</h3>
+    <h2 class="section-title">Selected Projects</h2>
 
-        <p>
-        Executive-level reporting dashboard evaluating campaign effectiveness,
-        conversion rates, channel performance, and simulated budget allocation.
-        </p>
-
-        <a class="button" href="https://campaign-performance-dashboard-cqjisa75dlk3sdi5xpekk7.streamlit.app/" target="_blank">Live Dashboard</a>
-        <a class="button" href="https://github.com/josephn24" target="_blank">GitHub</a>
+    <div class="project">
+      <img src="campaign.png">
+      <h2>Campaign Performance & Optimization Dashboard</h2>
+      <p>
+        Executive-level analytics dashboard evaluating campaign conversion,
+        audience engagement, channel performance, and simulated budget allocation.
+      </p>
+      <a href="https://campaign-performance-dashboard-cqjisa75dlk3sdi5xpekk7.streamlit.app/" target="_blank" class="btn btn-primary">Live Dashboard</a>
+      <a href="https://github.com/josephn24/campaign-dashboard" target="_blank" class="btn btn-secondary">GitHub Repo</a>
     </div>
 
-    <div class="project-card">
-        <img src="coffee.png" alt="Coffee Dashboard">
-
-        <h3>Coffee Shop Cost Optimization Dashboard</h3>
-
-        <p>
+    <div class="project">
+      <img src="coffee.png">
+      <h2>Coffee Shop Cost Optimization Dashboard</h2>
+      <p>
         Operational analytics tool analyzing revenue drivers, ingredient costs,
         labor impact, and profit margins to identify cost-saving opportunities.
-        </p>
-
-        <a class="button" href="https://coffeeshop-dse4qsnm2gdwo5nltq7zbt.streamlit.app/" target="_blank">Live Dashboard</a>
-        <a class="button" href="https://github.com/josephn24" target="_blank">GitHub</a>
+      </p>
+      <a href="https://coffeeshop-dse4qsnm2gdwo5nltq7zbt.streamlit.app/" target="_blank" class="btn btn-primary">Live Dashboard</a>
+      <a href="https://github.com/josephn24/coffee-dashboard" target="_blank" class="btn btn-secondary">GitHub Repo</a>
     </div>
 
     <div class="footer">
-        © 2025 Joseph Nagothu
+      © 2025 Joseph Nagothu
     </div>
+
+  </div>
 
 </div>
 
