@@ -1,201 +1,386 @@
-import streamlit as st
-import pandas as pd
-import plotly.express as px
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Joseph Nagothu | Data Analytics Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 
-st.set_page_config(
-    page_title="Customer Marketing Dashboard",
-    page_icon="📊",
-    layout="wide"
-)
-
-# Load data
-df = pd.read_excel("marketing_campaign_cleaned.xlsx")
-
-# ── Header ────────────────────────────────────────────────────────────────────
-st.markdown("""
 <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap');
-html, body, [class*="css"] { font-family: 'DM Sans', sans-serif; }
-.hero {
-    background: linear-gradient(135deg, #f0f4ff 0%, #fafafa 100%);
-    border: 1px solid #e0e7ff;
-    border-left: 4px solid #2563eb;
-    border-radius: 12px;
-    padding: 1.4rem 1.8rem;
-    margin-bottom: 1.5rem;
-}
-.hero h1 { font-size: 1.6rem; font-weight: 700; color: #111; margin: 0 0 0.4rem 0; }
-.hero p  { font-size: 0.88rem; color: #555; line-height: 1.7; margin: 0; }
-.hero .meta { font-size: 0.75rem; color: #888; margin-top: 0.6rem; }
-.hero .meta b { color: #2563eb; }
-</style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-<div class="hero">
-  <h1>📊 Customer Behavior & Marketing Campaign Dashboard</h1>
-  <p>
-    This dashboard explores customer purchasing behavior and campaign response patterns
-    for a retail company across <b>2,237 customers</b>. The dataset covers demographics
-    (age, education, income, marital status), spending across product categories
-    (wine, meat, fish, sweets, gold), and purchase channels (web, store, catalog).
-    Use the sidebar filters to segment customers and explore trends.
-  </p>
-  <div class="meta">
-    <b>Dataset:</b> Customer Marketing Campaign &nbsp;·&nbsp;
-    <b>Customers:</b> 2,237 &nbsp;·&nbsp;
-    <b>Variables:</b> Demographics, Spending, Channels, Campaign Response
+body {
+  font-family: 'DM Sans', sans-serif;
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  background: #f7f6f2;
+  color: #111;
+}
+
+/* ── LEFT — clean white, same as before ── */
+.left {
+  width: 38%;
+  height: 100vh;
+  position: fixed;
+  left: 0; top: 0;
+  background: #ffffff;
+  border-right: 1px solid #ececec;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 48px;
+}
+
+.left-content {
+  text-align: center;
+  max-width: 360px;
+}
+
+.profile-pic {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 24px;
+  box-shadow: 0 15px 45px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+.profile-pic:hover { transform: scale(1.03); }
+
+.left-content h1 {
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: #111;
+  letter-spacing: -1px;
+  margin-bottom: 14px;
+}
+
+.bio {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: #555555;
+  margin-bottom: 24px;
+}
+
+.icon-row { margin-bottom: 20px; }
+.icon-link {
+  display: inline-block;
+  margin: 0 10px;
+  transition: transform 0.2s ease;
+  opacity: 0.55;
+}
+.icon-link:hover { transform: translateY(-3px); opacity: 1; }
+.icon-link img { width: 28px; height: 28px; }
+
+.resume-btn {
+  display: inline-block;
+  padding: 11px 26px;
+  background: #2563eb;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px rgba(37,99,235,0.3);
+}
+.resume-btn:hover {
+  background: #1e4ed8;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(37,99,235,0.4);
+}
+
+.skills {
+  margin-top: 36px;
+  text-align: left;
+  border-top: 1px solid #ececec;
+  padding-top: 24px;
+}
+
+.skills-label {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #aaaaaa;
+  margin-bottom: 14px;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.skill-tag {
+  background: #f5f5f5;
+  border: 1px solid #e8e8e8;
+  color: #555;
+  font-size: 0.73rem;
+  padding: 4px 10px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+.skill-tag:hover {
+  background: #eef2ff;
+  border-color: #c7d2fe;
+  color: #3b4fd4;
+}
+.skill-tag.hi {
+  background: #eef2ff;
+  border-color: #c7d2fe;
+  color: #2563eb;
+  font-weight: 500;
+}
+
+/* ── RIGHT — scrollable projects ── */
+.right {
+  margin-left: 38%;
+  width: 62%;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 64px 56px;
+  background: #f7f6f2;
+}
+
+.right::-webkit-scrollbar { width: 4px; }
+.right::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
+
+.section-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #aaaaaa;
+  margin-bottom: 28px;
+}
+
+/* Project cards */
+.project {
+  background: #ffffff;
+  border-radius: 16px;
+  margin-bottom: 36px;
+  overflow: hidden;
+  border: 1px solid #e8e4dc;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeUp 0.5s ease both;
+}
+.project:nth-child(2) { animation-delay: 0.1s; }
+.project:nth-child(3) { animation-delay: 0.2s; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.project:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.07);
+}
+
+.project-img-wrap {
+  width: 100%;
+  height: 205px;
+  overflow: hidden;
+  background: #e8e4dc;
+}
+.project img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  transition: transform 0.5s ease;
+  display: block;
+}
+.project:hover img { transform: scale(1.03); }
+
+.project-body { padding: 22px 26px 24px; }
+
+.project-tags {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+.tag {
+  font-size: 0.67rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 5px;
+}
+.tag-gaming  { background: #fff7ed; color: #c2410c; }
+.tag-mktg    { background: #f0fdf4; color: #166534; }
+.tag-ops     { background: #fdf4ff; color: #7e22ce; }
+
+.project h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+
+.project p {
+  color: #666;
+  line-height: 1.7;
+  font-size: 0.875rem;
+  margin-bottom: 18px;
+}
+
+.btn-row { display: flex; gap: 10px; }
+
+.btn {
+  display: inline-block;
+  padding: 9px 18px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+.btn-primary {
+  background: #2563eb;
+  color: white;
+  box-shadow: 0 3px 10px rgba(37,99,235,0.25);
+}
+.btn-primary:hover {
+  background: #1e4ed8;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 16px rgba(37,99,235,0.35);
+}
+.btn-secondary {
+  background: transparent;
+  color: #333;
+  border: 1px solid #e0e0e0;
+}
+.btn-secondary:hover {
+  background: #f3f4f6;
+  transform: translateY(-2px);
+}
+
+/* Mobile */
+@media (max-width: 960px) {
+  body { flex-direction: column; overflow: auto; height: auto; }
+  .left { position: relative; width: 100%; height: auto; }
+  .right { margin-left: 0; width: 100%; height: auto; padding: 40px 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- LEFT -->
+<div class="left">
+  <div class="left-content">
+
+    <img src="profile.jpg" class="profile-pic" alt="Joseph Nagothu">
+
+    <h1>Joseph Nagothu</h1>
+
+    <p class="bio">
+      Business Analytics graduate student focused on
+      game analytics, A/B testing, retention modeling,
+      and performance dashboards.
+    </p>
+
+    <div class="icon-row">
+      <a href="https://www.linkedin.com/in/joseph-nagothu-50a493355/" target="_blank" class="icon-link">
+        <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
+      </a>
+    </div>
+
+    <a href="Joseph_Nagothu_Resume.pdf" target="_blank" class="resume-btn">Resume</a>
+
+    <div class="skills">
+      <div class="skills-label">Technical Skills</div>
+      <div class="skill-tags">
+        <span class="skill-tag hi">SQL · BigQuery</span>
+        <span class="skill-tag hi">A/B Testing</span>
+        <span class="skill-tag hi">Python</span>
+        <span class="skill-tag hi">Streamlit</span>
+        <span class="skill-tag">Pandas · Plotly</span>
+        <span class="skill-tag">Retention Analysis</span>
+        <span class="skill-tag">KPI Dashboards</span>
+        <span class="skill-tag">LiveOps Analytics</span>
+        <span class="skill-tag">Statistical Modeling</span>
+        <span class="skill-tag">Mixpanel · Tableau</span>
+        <span class="skill-tag">Marketing Analytics</span>
+        <span class="skill-tag">Monte Carlo Simulation</span>
+        <span class="skill-tag">SPSS</span>
+        <span class="skill-tag">Cost Modeling</span>
+      </div>
+    </div>
+
   </div>
 </div>
-""", unsafe_allow_html=True)
 
-# ── Sidebar Filters ───────────────────────────────────────────────────────────
-st.sidebar.header("Filters")
+<!-- RIGHT -->
+<div class="right">
+  <div class="section-label">Selected Projects</div>
 
-age_range = st.sidebar.slider(
-    "Age Range",
-    int(df["Age"].min()), int(df["Age"].max()),
-    (int(df["Age"].min()), int(df["Age"].max()))
-)
+  <!-- Cookie Cats -->
+  <div class="project">
+    <div class="project-img-wrap">
+      <img src="cookiecats.png" alt="Cookie Cats LiveOps Dashboard">
+    </div>
+    <div class="project-body">
+      <div class="project-tags">
+        <span class="tag tag-gaming">🎮 F2P Gaming</span>
+        <span class="tag tag-gaming">LiveOps</span>
+        <span class="tag tag-gaming">A/B Testing</span>
+      </div>
+      <h2>Cookie Cats — LiveOps Analytics Dashboard</h2>
+      <p>F2P mobile game analytics dashboard analyzing a real 90k-player A/B test on gate placement. Covers Day-1 &amp; Day-7 retention, statistical significance testing, player engagement segmentation, and data-driven LiveOps recommendations.</p>
+      <div class="btn-row">
+        <a href="https://cookie-cats-dashboard-bdqkcgwarkjv6gjjrkgtjb.streamlit.app/" class="btn btn-primary" target="_blank">Live Dashboard</a>
+        <a href="https://github.com/josephn24/cookie-cats-dashboard" class="btn btn-secondary" target="_blank">GitHub</a>
+      </div>
+    </div>
+  </div>
 
-income_range = st.sidebar.slider(
-    "Income Range ($)",
-    int(df["Income"].min()), int(df["Income"].max()),
-    (int(df["Income"].min()), int(df["Income"].max()))
-)
+  <!-- Campaign -->
+  <div class="project">
+    <div class="project-img-wrap">
+      <img src="campaign.png" alt="Customer Marketing Campaign Dashboard">
+    </div>
+    <div class="project-body">
+      <div class="project-tags">
+        <span class="tag tag-mktg">📊 Marketing</span>
+        <span class="tag tag-mktg">Customer Analytics</span>
+        <span class="tag tag-mktg">Segmentation</span>
+      </div>
+      <h2>Customer Behavior & Marketing Campaign Dashboard</h2>
+      <p>Interactive dashboard analyzing 2,237 retail customers across demographics, spending patterns, and purchase channels. Explores how income, education, and marital status drive spending behavior across web, store, and catalog channels.</p>
+      <div class="btn-row">
+        <a href="https://prokect2-ne4vx9vfb5xcp4s7pa5bmx.streamlit.app/" class="btn btn-primary" target="_blank">Live Dashboard</a>
+        <a href="https://github.com/josephn24/prokect2" class="btn btn-secondary" target="_blank">GitHub</a>
+      </div>
+    </div>
+  </div>
 
-education_filter = st.sidebar.multiselect(
-    "Education Level",
-    df["Education"].unique(),
-    default=list(df["Education"].unique())
-)
+  <!-- Coffee Shop -->
+  <div class="project">
+    <div class="project-img-wrap">
+      <img src="coffee.png" alt="Coffee Shop Cost Optimization Dashboard">
+    </div>
+    <div class="project-body">
+      <div class="project-tags">
+        <span class="tag tag-ops">☕ Operations</span>
+        <span class="tag tag-ops">Cost Analysis</span>
+      </div>
+      <h2>Coffee Shop Cost Optimization Dashboard</h2>
+      <p>Operational analytics dashboard analyzing revenue drivers, ingredient costs, labor impact, and profit margins to surface cost-saving opportunities and improve unit economics.</p>
+      <div class="btn-row">
+        <a href="https://coffeeshop-dse4qsnm2gdwo5nltq7zbt.streamlit.app/" class="btn btn-primary" target="_blank">Live Dashboard</a>
+        <a href="https://github.com/josephn24/coffee-shop-dashboard" class="btn btn-secondary" target="_blank">GitHub</a>
+      </div>
+    </div>
+  </div>
 
-marital_filter = st.sidebar.multiselect(
-    "Marital Status",
-    df["Marital_Status"].unique(),
-    default=list(df["Marital_Status"].unique())
-)
-
-# ── Apply Filters ─────────────────────────────────────────────────────────────
-filtered_df = df[
-    (df["Age"].between(age_range[0], age_range[1])) &
-    (df["Income"].between(income_range[0], income_range[1])) &
-    (df["Education"].isin(education_filter)) &
-    (df["Marital_Status"].isin(marital_filter))
-]
-
-st.markdown(f"**{len(filtered_df):,} customers** match the current filters.")
-
-if len(filtered_df) == 0:
-    st.error("No data found for the selected filters. Try adjusting your selections.")
-    st.stop()
-
-# ── KPI Row ───────────────────────────────────────────────────────────────────
-k1, k2, k3, k4 = st.columns(4)
-k1.metric("Customers", f"{len(filtered_df):,}")
-k2.metric("Avg Income", f"${filtered_df['Income'].mean():,.0f}")
-k3.metric("Avg Total Spent", f"${filtered_df['TotalSpent'].mean():,.0f}")
-k4.metric("Avg Age", f"{filtered_df['Age'].mean():.0f} yrs")
-
-st.markdown("---")
-
-# ── Chart 1: Spending by Education ───────────────────────────────────────────
-st.subheader("1. Average Spending by Education Level")
-st.caption("Higher education levels tend to correlate with higher total spending across all product categories.")
-
-bar_data = filtered_df.groupby("Education")["TotalSpent"].mean().reset_index()
-bar_data = bar_data.sort_values(by="TotalSpent", ascending=False)
-
-fig_bar = px.bar(
-    bar_data, x="Education", y="TotalSpent",
-    title="Average Total Spending by Education Level",
-    labels={"TotalSpent": "Avg Total Spent ($)", "Education": "Education Level"}
-)
-fig_bar.update_traces(
-    marker=dict(color=bar_data["TotalSpent"], colorscale="Blues"),
-    texttemplate='$%{y:.0f}', textposition='outside'
-)
-avg_spending = bar_data["TotalSpent"].mean()
-fig_bar.add_hline(y=avg_spending, line_dash="dot", line_color="red",
-                  annotation_text=f"Avg: ${avg_spending:.0f}", annotation_position="top right")
-fig_bar.update_layout(plot_bgcolor="rgba(0,0,0,0)", paper_bgcolor="rgba(0,0,0,0)")
-st.plotly_chart(fig_bar, use_container_width=True)
-
-# ── Chart 2: Purchases by Age ─────────────────────────────────────────────────
-st.subheader("2. Total Purchases by Age")
-st.caption("Tracks the average number of purchases (web + store + catalog) across different customer age groups.")
-
-filtered_df = filtered_df.copy()
-filtered_df["TotalPurchases"] = (
-    filtered_df["NumWebPurchases"] +
-    filtered_df["NumStorePurchases"] +
-    filtered_df["NumCatalogPurchases"]
-)
-
-line_data = filtered_df.groupby("Age")["TotalPurchases"].mean().reset_index()
-
-fig_line = px.line(
-    line_data, x="Age", y="TotalPurchases",
-    title="Average Total Purchases by Age",
-    labels={"TotalPurchases": "Avg Purchases", "Age": "Customer Age"}
-)
-fig_line.update_traces(line_shape="spline", line_color="#2563eb")
-
-peak_idx = line_data["TotalPurchases"].idxmax()
-fig_line.add_scatter(
-    x=[line_data.loc[peak_idx, "Age"]],
-    y=[line_data.loc[peak_idx, "TotalPurchases"]],
-    mode="markers+text",
-    text=[f"Peak: Age {line_data.loc[peak_idx, 'Age']}"],
-    textposition="top center",
-    marker=dict(size=12, color="red"),
-    showlegend=False
-)
-fig_line.update_layout(plot_bgcolor="rgba(0,0,0,0)", paper_bgcolor="rgba(0,0,0,0)")
-st.plotly_chart(fig_line, use_container_width=True)
-
-# ── Charts 3 & 4 side by side ─────────────────────────────────────────────────
-col1, col2 = st.columns(2)
-
-with col1:
-    st.subheader("3. Customer Marital Status Breakdown")
-    st.caption("Distribution of customers by marital status within the filtered segment.")
-
-    marital_counts = filtered_df["Marital_Status"].value_counts().reset_index()
-    marital_counts.columns = ["Marital_Status", "Count"]
-    marital_counts = marital_counts.sort_values(by="Count", ascending=False)
-
-    show_legend = st.checkbox("Show Legend", value=True)
-
-    fig_donut = px.pie(
-        marital_counts, names="Marital_Status", values="Count",
-        hole=0.5, title="Marital Status Distribution"
-    )
-    fig_donut.update_traces(
-        marker=dict(colors=['#3b82f6','#f59e0b','#10b981','#ef4444','#8b5cf6']),
-        pull=[0.05] + [0] * (len(marital_counts) - 1),
-        textinfo="percent+label"
-    )
-    fig_donut.update_layout(showlegend=show_legend,
-                            paper_bgcolor="rgba(0,0,0,0)")
-    st.plotly_chart(fig_donut, use_container_width=True)
-
-with col2:
-    st.subheader("4. Income vs. Total Spending")
-    st.caption("Higher-income customers spend more overall. Each color represents a different education level.")
-
-    fig_scatter = px.scatter(
-        filtered_df, x="Income", y="TotalSpent",
-        color="Education", opacity=0.65,
-        trendline="ols",
-        title="Income vs Total Spending by Education",
-        labels={"TotalSpent": "Total Spent ($)", "Income": "Annual Income ($)"}
-    )
-    fig_scatter.update_layout(
-        xaxis=dict(rangeslider=dict(visible=True)),
-        hovermode="closest",
-        plot_bgcolor="rgba(0,0,0,0)",
-        paper_bgcolor="rgba(0,0,0,0)"
-    )
-    st.plotly_chart(fig_scatter, use_container_width=True)
-
-st.markdown("---")
-st.markdown("<div style='text-align:center; color:#aaa; font-size:0.75rem'>Customer Marketing Campaign Dataset · Joseph Nagothu · Analytics Portfolio</div>", unsafe_allow_html=True)
+</div>
+</body>
+</html>
